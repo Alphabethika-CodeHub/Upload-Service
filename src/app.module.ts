@@ -7,7 +7,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './constant/configuration';
-import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -31,7 +30,7 @@ import { MulterModule } from '@nestjs/platform-express';
           migrations: ['dist/migrations/*.{ts,js}'],
           migrationsTableName: 'typeorm_migrations',
           logger: 'file',
-          synchronize: configService.get<string>('ENVIRONMENT') === 'local' ? true : false,
+          synchronize: configService.get<string>('ENVIRONMENT') === 'LOCAL' ? true : false,
         }
       },
       inject: [ConfigService]

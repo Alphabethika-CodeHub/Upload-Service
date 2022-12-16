@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UploadedFile, UploadedFiles, UseInterceptors, Res, StreamableFile, ParseUUIDPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, UploadedFile, UploadedFiles, UseInterceptors, Res, StreamableFile, ParseUUIDPipe, HttpStatus } from '@nestjs/common';
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { CreateFileDto } from './dto/create-file.dto';
 import { File as FileEntity } from './entities/file.entity';
 import { FileService } from './file.service';
 import { Response } from 'express';
+import { MessageStatus, ReturnInterface } from 'src/constant/constant';
 
 @Controller('file')
 export class FileController {
@@ -27,8 +28,12 @@ export class FileController {
 
   @Post('/create/single')
   @UseInterceptors(FileInterceptor('file'))
-  private async createFile(@Body() createFileDto: CreateFileDto, @UploadedFile() file): Promise<FileEntity> {
-    return await this.fileService.createFile(createFileDto, file)
+  private async createFile(@Body() createFileDto: CreateFileDto, @UploadedFile() file): Promise<ReturnInterface> {
+    return {
+      statusCode: HttpStatus.CREATED,
+      message: MessageStatus.SUCCESS,
+      data: await this.fileService.createFile(createFileDto, file)
+    }
   }
 
   @Post('/create/many')

@@ -52,7 +52,6 @@ export class FileService {
         HttpStatus.INTERNAL_SERVER_ERROR
       )
     }
-
   }
 
   async getFile(id: string): Promise<FileEntity> {

@@ -1,8 +1,8 @@
 {
   "name": "upload_service",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Upload Service Made With Nest JS",
+  "author": "Daffa Nabil Hartono",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -26,8 +26,9 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^9.0.0",
+    "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
-    "helmet": "^6.0.1",
+    "helmet": "^6.0.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
